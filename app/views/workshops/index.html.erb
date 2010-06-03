@@ -1,0 +1,21 @@
+<% title "Workshops" %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Short Description</th>
+  </tr>
+  <% for workshop in @workshops %>
+    <tr>
+      <td><%=h workshop.title %></td>
+      <td><%=h workshop.description %></td>
+      <td><%=h workshop.short_description %></td>
+      <td><%= link_to "Show", workshop %></td>
+      <td><%= link_to "Edit", edit_workshop_path(workshop) %></td>
+      <td><%= link_to "Destroy", workshop, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Workshop", new_workshop_path %></p>

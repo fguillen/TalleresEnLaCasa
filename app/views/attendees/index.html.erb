@@ -1,0 +1,23 @@
+<% title "Attendees" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Comment</th>
+    <th>Phone</th>
+  </tr>
+  <% for attendee in @attendees %>
+    <tr>
+      <td><%=h attendee.name %></td>
+      <td><%=h attendee.email %></td>
+      <td><%=h attendee.comment %></td>
+      <td><%=h attendee.phone %></td>
+      <td><%= link_to "Show", [@workshop, attendee] %></td>
+      <td><%= link_to "Edit", edit_workshop_attendee_path(@workshop, attendee) %></td>
+      <td><%= link_to "Destroy", [@workshop, attendee], :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Attendee", new_workshop_attendee_path(@workshop) %></p>

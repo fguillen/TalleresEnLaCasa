@@ -1,0 +1,32 @@
+<% title "Workshop" %>
+
+<p>
+  <strong>Title:</strong>
+  <%=h @workshop.title %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%=h @workshop.description %>
+</p>
+<p>
+  <strong>Short Description:</strong>
+  <%=h @workshop.short_description %>
+</p>
+
+<p>
+  <strong>Alumnos</strong>
+  <ul>
+    <% @workshop.attendees.each do |attendee| %>
+    <li><%= link_to attendee.name, [@workshop, attendee] %></li>
+    <% end %>
+  </ul>
+  
+  <strong>Si estás interesado/a apuntante y nos pondremos en contacto contigo</strong>
+  <%= render :partial => 'attendees/form' %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_workshop_path(@workshop) %> |
+  <%= link_to "Destroy", @workshop, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", workshops_path %>
+</p>

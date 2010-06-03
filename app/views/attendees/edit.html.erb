@@ -1,0 +1,8 @@
+<% title "Edit Attendee" %>
+
+<%= render :partial => 'form' %>
+
+<p>
+  <%= link_to "Show", [@workshop, @attendee] %> |
+  <%= link_to "View All", workshop_attendees_path( @workshop ) %>
+</p>

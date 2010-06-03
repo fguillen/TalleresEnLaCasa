@@ -1,0 +1,24 @@
+<% title "Attendee" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @attendee.name %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%=h @attendee.email %>
+</p>
+<p>
+  <strong>Comment:</strong>
+  <%=h @attendee.comment %>
+</p>
+<p>
+  <strong>Phone:</strong>
+  <%=h @attendee.phone %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_workshop_attendee_path(@workshop, @attendee) %> |
+  <%= link_to "Destroy", [@workshop, @attendee], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", workshop_attendees_path( @workshop ) %>
+</p>
