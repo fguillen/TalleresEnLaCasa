@@ -1,4 +1,4 @@
-== TalleresEnLaCasa
+# TalleresEnLaCasa
 
 Is a very simple web-application to manage a bunch of workshops and the attendees.
 
