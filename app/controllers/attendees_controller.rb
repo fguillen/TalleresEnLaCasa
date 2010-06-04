@@ -31,7 +31,7 @@ class AttendeesController < ApplicationController
       redirect_to @workshop
     else
       flash[:alert] = "Algún error al apuntarte al Taller."
-      redirect_to @workshop
+      render 'workshops/show'
     end
   end
   

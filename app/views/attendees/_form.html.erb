@@ -1,20 +1,21 @@
 <% form_for [@workshop, @attendee] do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :name %><br />
+    <%= f.label :name, 'Nombre' %>
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :email %><br />
+    <%= f.label :email, 'Email' %>
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :comment %><br />
-    <%= f.text_area :comment %>
-  </p>
-  <p>
-    <%= f.label :phone %><br />
+    <%= f.label :phone, 'Teléfono' %>
     <%= f.text_field :phone %>
   </p>
-  <p><%= f.submit "Submit" %></p>
+  <p>
+    <%= f.label :comment, 'Commentario' %>
+    <%= f.text_area :comment %>
+  </p>
+
+  <p><%= f.submit "Enviar" %></p>
 <% end %>

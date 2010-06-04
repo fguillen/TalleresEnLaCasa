@@ -1,32 +1,32 @@
-<% title "Workshop" %>
+<% title "Taller | #{@workshop.title}" %>
 
-<p>
-  <strong>Title:</strong>
-  <%=h @workshop.title %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%=h @workshop.description %>
-</p>
-<p>
-  <strong>Short Description:</strong>
-  <%=h @workshop.short_description %>
-</p>
+<h2><%= @workshop.title %></h2>
+<%= simple_format( @workshop.description ) %>
 
-<p>
-  <strong>Alumnos</strong>
-  <ul>
-    <% @workshop.attendees.each do |attendee| %>
-    <li><%= link_to attendee.name, [@workshop, attendee] %></li>
-    <% end %>
-  </ul>
+<% if admin? %>
+<h2>Alumnos</h2>
+<ul>
+  <% @workshop.attendees.each do |attendee| %>
+  <li><%= link_to attendee.name, [@workshop, attendee] %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<h2>Apuntarse</h2>
+<p>Si estás interesado/a en este curso rellena este formulario y nos pondremos en contacto contigo.
+  Rellenar este formulario no conlleva ningún compromiso sólo indica que tienes interés y que te
+  gustaría estar informado/a, hasta que no cerremos las fechas y comprovemos
+  el interés no empezaremos a solicitar un registro con compromiso.<p>
   
-  <strong>Si estás interesado/a apuntante y nos pondremos en contacto contigo</strong>
-  <%= render :partial => 'attendees/form' %>
-</p>
+<p>Las plazas son limitadísimas.</p>
 
-<p>
-  <%= link_to "Edit", edit_workshop_path(@workshop) %> |
-  <%= link_to "Destroy", @workshop, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", workshops_path %>
-</p>
+<%= render :partial => 'attendees/form' %>
+
+<% if admin? %>
+<ul class="admin-links">
+  <li><%= link_to "Editar", edit_workshop_path(@workshop) %></li>
+  <li><%= link_to "Eliminar", @workshop, :confirm => 'Segura que quieres eliminar este Taller?', :method => :delete %></li>
+</ul>
+<% end %>
+
+<p><%= link_to "Ver Todos los Talleres", workshops_path %></p>

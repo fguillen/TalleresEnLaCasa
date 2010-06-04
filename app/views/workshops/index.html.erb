@@ -1,21 +1,36 @@
-<% title "Workshops" %>
+<% title "Talleres" %>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Short Description</th>
-  </tr>
-  <% for workshop in @workshops %>
-    <tr>
-      <td><%=h workshop.title %></td>
-      <td><%=h workshop.description %></td>
-      <td><%=h workshop.short_description %></td>
-      <td><%= link_to "Show", workshop %></td>
-      <td><%= link_to "Edit", edit_workshop_path(workshop) %></td>
-      <td><%= link_to "Destroy", workshop, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
 
-<p><%= link_to "New Workshop", new_workshop_path %></p>
+<h2>Talleres en la Casa</h2>
+<p>Este verano volvemos a la escuela!</p>
+
+<p>Durante los meses de Julio y Agosto, Talleres en la Casa, 
+  es una propuesta abierta para todos aquellos que acababais los cuadernos Santillana 
+  la primera semana de vacaciones, tenemos deberes para vosotros!</p>
+  
+<h2>Los Talleres</h2>
+
+<p>Los cursos son intensivos de <strong>cuatro días</strong>, tres horas cada día.</p>
+
+<ul class="workshops">
+<% @workshops.each do |workshop| %>
+<li><%= link_to workshop.title, workshop %> <%= workshop.short_description %></li>
+<% end %>
+</ul>
+
+<% if admin? %>
+<ul class="admin-links">
+  <li><%= link_to "Nuevo Taller", new_workshop_path %></li>
+</ul>
+<% end %>
+  
+<h2>El Taller</h2>
+<p><%= image_tag 'map.png' %></p>
+<p>La Casa Taller se encuentra en Binissalem, a 25 min. en tren desde Palma.</p>
+ 
+<p><%= image_tag 'taller_composition.png' %></p>
+<p>Entre viñedos y almendros, en una bonita casa mallorquina con un estudio grande para que quepamos tod@s.</p>
+
+<h2>Organiza</h2>
+<p><%= link_to 'Cecila Molano', 'http://ceciliamolano.com' %> amante de todo tipo de expresión artísticas. 
+  Puedes contactar con ella enviándo un email a <%= link_to 'chmolano@gmail.com', 'mailto:chmolano@gmail.com' %>.</p>

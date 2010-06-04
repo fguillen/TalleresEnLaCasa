@@ -1,0 +1,121 @@
+body{
+  background-color: black;
+line-height:22px;
+}
+
+#container{
+  margin: 0px auto;
+  width: 1024px;
+}
+
+#container > h1 {
+  background-image:url('/images/header.jpg');
+  background-repeat:no-repeat;
+  background-position:center top;
+  width: 1024px;
+  height: 641px;
+  margin: 0px;
+  text-indent: -9999px;
+  
+}
+
+#container > #background {
+  background-image:url('/images/background.jpg');
+  background-repeat:repeat;
+  background-position:center top;
+  width: 1024px;
+}
+
+#container > #background > #content {
+  font-family:"Helvetica", arial, sans-serif;
+  padding: 10px 100px 20px 100px;
+  color: white;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+
+label {
+text-align: right;
+width: 150px;
+display: block;
+float: left;
+margin: 5px 10px 0px 0px;
+}
+
+input, textarea {
+border: 1px solid white;
+background-color: #000;
+color: white;
+padding: 5px;
+}
+
+textarea{
+height: 100px;
+}
+
+textarea.edition{
+height: 500px;
+}
+
+input[type="submit"]{
+margin-left: 300px;
+}
+
+ul.menu{
+border-bottom: 1px solid white;
+margin-bottom: 20px;
+height: 30px;
+}
+
+ul.menu li{
+float: left;
+margin-right: 20px;
+}
+
+ul.workshops{
+margin: 20px;
+}
+
+ul.workshops li{
+margin-bottom: 5px;
+list-style:square inside url("/images/list-icon.png");
+}
+
+ul.admin-links{
+margin: 20px;
+}
+
+ul.admin-links li{
+background-color: white;
+padding: 20px;
+}
+
+ul.admin-links li a{
+color: black;
+}
+
+#flash_notice,
+#flash_alert,
+#errorExplanation{
+margin: 0px 0px 20px 0px;
+background-color: black;
+padding: 20px;
+}
+
+div.fieldWithErrors input{
+border: 1px solid red;
+margin-bottom: 4px;
+}
+
+h2{
+margin-top: 40px;
+}

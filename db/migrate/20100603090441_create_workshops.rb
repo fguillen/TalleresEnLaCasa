@@ -5,6 +5,7 @@ class CreateWorkshops < ActiveRecord::Migration
       t.text :description
       t.text :short_description
       t.string :permalink
+      t.integer :price
       t.timestamps
     end
   end

@@ -1,8 +1,11 @@
 development:
   domain: localhost:3000
+  password: wadus
 
 test:
   domain: test.host
-
+  password: wadus
+  
 production:
   domain: example.com
+  password: wadus

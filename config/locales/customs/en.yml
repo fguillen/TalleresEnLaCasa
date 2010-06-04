@@ -1,0 +1,11 @@
+es:         
+  activerecord: 
+    models: 
+      attendee: Alumno
+      workshop: Taller
+      
+    attributes: 
+      attendee: 
+        name: Nombre
+        phone: Teléfono
+        email: Email
