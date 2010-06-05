@@ -17,12 +17,16 @@
 <% end %>
 
 <% if admin? %>
-<h1>Alumnos</h1>
-<ul>
-  <% @workshop.attendees.each do |attendee| %>
-  <li><%= link_to attendee.name, [@workshop, attendee] %>, <%= attendee.email %>, <%= attendee.phone %>, [<%= attendee.status %>] <% if !attendee.comment.blank? %>(<%= link_to 'comentario!', [@workshop, attendee] %>)<% end %></li>
+  <h1>Alumnos</h1>
+  <% if @workshop.attendees.empty? %>
+    <p>Ningún alumno por ahora.</p>
+  <% else %>
+    <ul>
+      <% @workshop.attendees.each do |attendee| %>
+      <li><%= link_to attendee.name, [@workshop, attendee] %>, <%= attendee.email %>, <%= attendee.phone %>, [<%= attendee.status %>] <% if !attendee.comment.blank? %>(<%= link_to 'comentario!', [@workshop, attendee] %>)<% end %></li>
+      <% end %>
+    </ul>
   <% end %>
-</ul>
 <% end %>
 
 <h1>Preinscripción</h1>

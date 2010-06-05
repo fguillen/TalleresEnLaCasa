@@ -73,9 +73,7 @@ textarea{
 height: 100px;
 }
 
-textarea.edition{
-height: 500px;
-}
+
 
 input[type="submit"]{
 margin-left: 300px;
@@ -141,4 +139,12 @@ font-style: italic;
 
 div.short-description{
 font-style: italic;
+}
+
+form.edit_workshop textarea{
+width: 600px;
+}
+
+form.edit_workshop textarea.edition{
+height: 500px;
 }
