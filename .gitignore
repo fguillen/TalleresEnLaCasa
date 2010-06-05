@@ -3,4 +3,4 @@ tmp
 #config/database.yml
 db/schema.rb
 db/*.sqlite3
-#config/app_config.yml
+config/app_config.yml

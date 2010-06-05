@@ -1,0 +1,30 @@
+test:
+  domain: test.host
+  password: wadus
+  admin_emails: ['wadus@email.com', 'wadus2@email.com']
+  email_from: 'wadusfrom@gmai.com'
+  preinscription_price: 10
+  paypal_api_user: wadus
+  paypal_api_password: wadus
+  paypal_api_firm: wadus
+
+development:
+  domain: localhost:3000
+  password: wadus
+  admin_emails: ['chmolano@gmail.com', 'fguillen.mail@gmail.com']
+  email_from: 'chmolano@gmail.com'
+  preinscription_price: 10
+  paypal_api_user: "seller_1231200230_biz_api1.gmail.com"
+  paypal_api_password: "1231200241"
+  paypal_api_firm: "AcBBZ88xuRQDp-z1hn.f7QZB.Z4RAd7sQJIsUfNy97TEucGfyIvKJ1Hg"
+
+        
+production:
+  domain: example.com
+  password: wadus
+  admin_emails: ['chmolano@gmail.com', 'fguillen.mail@gmail.com']
+  email_from: 'chmolano@gmail.com'
+  preinscription_price: 50
+  paypal_api_user: "seller_1231200230_biz_api1.gmail.com"
+  paypal_api_password: "1231200241"
+  paypal_api_firm: "AcBBZ88xuRQDp-z1hn.f7QZB.Z4RAd7sQJIsUfNy97TEucGfyIvKJ1Hg"
