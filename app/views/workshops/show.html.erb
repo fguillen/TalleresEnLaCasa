@@ -1,7 +1,13 @@
 <% title "Taller | #{@workshop.title}" %>
 
-<h2><%= @workshop.title %> <span class="price">(<%= @workshop.price %>€)</span></h2>
-<%= simple_format( @workshop.description ) %>
+<h1><%= @workshop.title %> <span class="price">(<%= @workshop.price %>€)</span></h1>
+<div class="short-description">
+  <%= simple_format( @workshop.short_description ) %>
+</div>
+
+<div class="description">
+  <%= simple_format( @workshop.description ) %>
+</div>
 
 <% if admin? %>
 <ul class="admin-links">
@@ -11,7 +17,7 @@
 <% end %>
 
 <% if admin? %>
-<h2>Alumnos</h2>
+<h1>Alumnos</h1>
 <ul>
   <% @workshop.attendees.each do |attendee| %>
   <li><%= link_to attendee.name, [@workshop, attendee] %>, <%= attendee.email %>, <%= attendee.phone %>, [<%= attendee.status %>] <% if !attendee.comment.blank? %>(<%= link_to 'comentario!', [@workshop, attendee] %>)<% end %></li>
@@ -19,7 +25,7 @@
 </ul>
 <% end %>
 
-<h2>Preinscripción</h2>
+<h1>Preinscripción</h1>
 <p>Rellena este formulario con tus datos, y realiza la preinscripción mediante Paypal.</p>
 
 <p>Cualquier duda ponte en contacto con: <a href="mailto:chmolano@gmail.com">Cecilia H. Molano</a>.
