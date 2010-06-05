@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class WorkshopsControllerTest < ActionController::TestCase
+  def setup
+    WorkshopsController.any_instance.stubs(:admin?).returns(true)
+  end
+  
   def test_index
     3.times { Factory(:workshop) }
     get :index
@@ -21,7 +25,6 @@ class WorkshopsControllerTest < ActionController::TestCase
     assert_match( workshop.description, @response.body )
     
     assert_match( attendee.name, @response.body )
-    
   end
   
   def test_new

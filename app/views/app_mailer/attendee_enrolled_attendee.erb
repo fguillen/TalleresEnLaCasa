@@ -1,0 +1,27 @@
+Talleres en la Casa informa:
+
+Has completado la preinscripción al Taller: '<%= @attendee.workshop.title %>'.
+
+Estos son los datos que hemos recibido:
+
+Nombre: <%= @attendee.name %>
+Email: <%= @attendee.email %>
+Teléfono: <%= @attendee.phone %>
+<% if !@attendee.comment.blank? %>
+Comentario
+--------
+<%= @attendee.comment %>
+<% end %>
+
+Recuerda que el precio total del Taller es de <%= @attendee.workshop.price %>€, la diferencia se podrá pagar al inicio del curso.
+
+Te recordamos que la preinscripción sólo se reembolsará en caso de que no se completen las plazas del Taller.
+
+En caso de no completarse las plazas para este Taller te avisaremos con tiempo y se te reembolsará el total de tu preinscripción.
+
+Muchas gracias por mostrar interés por este Taller, nos lo vamos a pasar genial.
+
+--
+Talleres en la Casa
+Cualquier duda ponte en contacto con Cecilia: chmolano@gmail.com.
+http://talleresenlacasa.com

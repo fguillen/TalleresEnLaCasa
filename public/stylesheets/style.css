@@ -13,9 +13,10 @@ line-height:22px;
   background-repeat:no-repeat;
   background-position:center top;
   width: 1024px;
-  height: 641px;
+  height: 318px;
   margin: 0px;
   text-indent: -9999px;
+  cursor: pointer;
   
 }
 
@@ -91,12 +92,14 @@ list-style:square inside url("/images/list-icon.png");
 }
 
 ul.admin-links{
-margin: 20px;
+margin: 20px 0px;
 }
 
 ul.admin-links li{
 background-color: white;
-padding: 20px;
+padding: 10px;
+display: inline;
+margin: 10px;
 }
 
 ul.admin-links li a{
@@ -118,4 +121,10 @@ margin-bottom: 4px;
 
 h2{
 margin-top: 40px;
+}
+
+.price{
+font-size: 80%;
+font-style: italic;
+
 }

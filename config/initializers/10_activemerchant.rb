@@ -1,0 +1,1 @@
+ActiveMerchant::Billing::PaypalExpressGateway.default_currency = 'EUR'

@@ -1,0 +1,12 @@
+Talleres en la Casa informa:
+
+Un Alumno preinscrito al Taller: '<%= @attendee.workshop.title %>'.
+
+Nombre: <%= @attendee.name %>
+Email: <%= @attendee.email %>
+Teléfono: <%= @attendee.phone %>
+<% if !@attendee.comment.blank? %>
+Comentario
+--------
+<%= @attendee.comment %>
+<% end %>

@@ -2,6 +2,7 @@ require 'test_helper'
 
 class AttendeesControllerTest < ActionController::TestCase
   def setup
+    AttendeesController.any_instance.stubs(:admin?).returns(true)
     @workshop = Factory(:workshop)
   end
   
@@ -25,15 +26,20 @@ class AttendeesControllerTest < ActionController::TestCase
     assert_match( attendee.comment, @response.body )
   end
   
+
+
+  
   def test_create_invalid
     Attendee.any_instance.stubs(:valid?).returns(false)
     post :create, :workshop_id => @workshop.to_param
-    assert_redirected_to @workshop
+    assert_template 'workshops/show'
     assert_not_nil( flash[:alert] )
   end
   
   def test_create_valid
     attendee_attributes = Factory.attributes_for(:attendee, :comment => 'wadus comment')
+    bogus_gateway = ActiveMerchant::Billing::BogusExpressGateway.new
+    AttendeesController.any_instance.stubs(:gateway).returns(bogus_gateway)
     
     assert_difference "Attendee.count", 1 do
       post(
@@ -43,14 +49,55 @@ class AttendeesControllerTest < ActionController::TestCase
       )      
     end
     
-    assert_redirected_to @workshop
-    assert_not_nil(flash[:notice])
+    assert_redirected_to 'http://www.some-express-gateway-url/'
     
     attendee = Attendee.last
     assert_equal( attendee_attributes[:name], attendee.name )
     assert_equal( attendee_attributes[:email], attendee.email )
     assert_equal( attendee_attributes[:phone], attendee.phone )  
     assert_equal( attendee_attributes[:comment], attendee.comment )  
+    assert_not_nil( attendee.paypal_token )
+  end
+  
+  def test_confirm_payment
+    bogus_gateway = ActiveMerchant::Billing::BogusExpressGateway.new
+    AttendeesController.any_instance.stubs(:gateway).returns(bogus_gateway) 
+    attendee = Factory(:attendee, :paypal_token => 'wadustoken')
+    AppMailer.expects(:deliver_attendee_enrolled_admin).with(attendee)
+    AppMailer.expects(:deliver_attendee_enrolled_attendee).with(attendee)
+    
+    get(
+      :confirm_payment,
+      :workshop_id => attendee.workshop.to_param,
+      :id => attendee.id,
+      :token => attendee.paypal_token
+    )
+    
+    assert_redirected_to attendee.workshop
+    attendee.reload
+    assert_equal( Attendee::STATUS[:paid], attendee.status )
+    assert_not_nil( flash[:notice] )
+  end
+
+  def test_confirm_payment_error
+    bogus_gateway = ActiveMerchant::Billing::BogusExpressGateway.new
+    AttendeesController.any_instance.stubs(:gateway).returns(bogus_gateway) 
+    bogus_gateway.stubs(:details_for).returns( OpenStruct.new :payer_id => '1', :success? => false )
+    attendee = Factory(:attendee, :paypal_token => 'wadustoken')
+    AppMailer.expects(:deliver_attendee_enrolled_admin).never
+    AppMailer.expects(:deliver_attendee_enrolled_attendee).never
+    
+    get(
+      :confirm_payment,
+      :workshop_id => attendee.workshop.to_param,
+      :id => attendee.id,
+      :token => attendee.paypal_token
+    )
+    
+    assert_redirected_to attendee.workshop
+    attendee.reload
+    assert_equal( Attendee::STATUS[:error], attendee.status )
+    assert_not_nil( flash[:alert] )
   end
   
   def test_edit

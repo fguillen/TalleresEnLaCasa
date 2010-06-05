@@ -14,7 +14,7 @@
 
 <ul class="workshops">
 <% @workshops.each do |workshop| %>
-<li><%= link_to workshop.title, workshop %> <%= workshop.short_description %></li>
+<li><%= link_to workshop.title, workshop %> <span class="price">(<%= workshop.price %>€)</span> <%= workshop.short_description %></li>
 <% end %>
 </ul>
 
@@ -24,13 +24,31 @@
 </ul>
 <% end %>
   
-<h2>El Taller</h2>
+<h2>La Casa Taller</h2>
 <p><%= image_tag 'map.png' %></p>
 <p>La Casa Taller se encuentra en Binissalem, a 25 min. en tren desde Palma.</p>
  
 <p><%= image_tag 'taller_composition.png' %></p>
 <p>Entre viñedos y almendros, en una bonita casa mallorquina con un estudio grande para que quepamos tod@s.</p>
 
+<h2>Preinscripciones</h2>
+
+<p>Para reservar tu plaza en el curso y para asegurar que las plazas se completan se requiere <strong>pagar una preinscripción</strong>.<p>
+<p>El precio de la preinscripción para cualquier taller es de <strong><%= APP_CONFIG[:preinscription_price] %>€</strong>.</p>
+<p>El importe de la preinscripción <strong>sólo será devuelto en caso de que no se completaran las plazas para el curso</strong>.</p>
+
+<p>Las plazas del taller deberán ser cubiertas <strong>2 semanas antes del inicio del mismo</strong>, en caso de no cubrirse las plazas
+  en esta fecha se informará inmediatamente a los preinscritos y se les devolverá el importe de la preinscripción.</p>
+  
+<p>Las plazas son limitadísimas entre, <strong>8 y 10 personas por curso</strong>, haz tu preinscripción cuanto antes.</p>
+
+<p>El sistema de pago de la preinscripción es mediante <strong>Paypal</strong>, que es un sistema seguro.
+  Se puede pagar mediante una cuenta de Paypal si ya la tienes o mediante tarjeta de crédito.
+  Si tienes problemas con estos métodos de pago ponte en contacto con nosotros.</p>
+
 <h2>Organiza</h2>
-<p><%= link_to 'Cecila Molano', 'http://ceciliamolano.com' %> amante de todo tipo de expresión artísticas. 
-  Puedes contactar con ella enviándo un email a <%= link_to 'chmolano@gmail.com', 'mailto:chmolano@gmail.com' %>.</p>
+<p><%= link_to 'Cecila H. Molano', 'http://ceciliamolano.com' %> amante de todo tipo de expresión artísticas con gran experiencia
+  en el mundo del vídeo, del teatro y de la obra gráfica.</p>
+<p>Cecilia ha decidido convocar a varios de sus colaboradores con gran experiencia en diversas materias y convencerlos
+  para vernirse a Palma a impartir cursos muy personalizados.</p>
+<p>Puedes contactar con ella enviando un email a <%= link_to 'chmolano@gmail.com', 'mailto:chmolano@gmail.com' %>.</p>

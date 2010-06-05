@@ -17,8 +17,7 @@
   <%=h @attendee.phone %>
 </p>
 
-<p>
-  <%= link_to "Edit", edit_workshop_attendee_path(@workshop, @attendee) %> |
-  <%= link_to "Destroy", [@workshop, @attendee], :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", workshop_attendees_path( @workshop ) %>
-</p>
+<ul class="admin-links">
+  <li><%= link_to "Edit", edit_workshop_attendee_path(@workshop, @attendee) %></li>
+  <li><%= link_to "Destroy", [@workshop, @attendee], :confirm => 'Are you sure?', :method => :delete %></li>
+</ul>

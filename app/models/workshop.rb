@@ -9,4 +9,5 @@ class Workshop < ActiveRecord::Base
   def to_param
     self.permalink
   end
+
 end

@@ -1,4 +1,6 @@
 class WorkshopsController < ApplicationController
+  before_filter :require_admin, :only => [:new, :create, :edit, :update, :destroy]
+  
   def index
     @workshops = Workshop.all
   end

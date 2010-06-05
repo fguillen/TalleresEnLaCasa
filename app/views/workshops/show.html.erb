@@ -1,26 +1,7 @@
 <% title "Taller | #{@workshop.title}" %>
 
-<h2><%= @workshop.title %></h2>
+<h2><%= @workshop.title %> <span class="price">(<%= @workshop.price %>€)</span></h2>
 <%= simple_format( @workshop.description ) %>
-
-<% if admin? %>
-<h2>Alumnos</h2>
-<ul>
-  <% @workshop.attendees.each do |attendee| %>
-  <li><%= link_to attendee.name, [@workshop, attendee] %></li>
-  <% end %>
-</ul>
-<% end %>
-
-<h2>Apuntarse</h2>
-<p>Si estás interesado/a en este curso rellena este formulario y nos pondremos en contacto contigo.
-  Rellenar este formulario no conlleva ningún compromiso sólo indica que tienes interés y que te
-  gustaría estar informado/a, hasta que no cerremos las fechas y comprovemos
-  el interés no empezaremos a solicitar un registro con compromiso.<p>
-  
-<p>Las plazas son limitadísimas.</p>
-
-<%= render :partial => 'attendees/form' %>
 
 <% if admin? %>
 <ul class="admin-links">
@@ -28,5 +9,23 @@
   <li><%= link_to "Eliminar", @workshop, :confirm => 'Segura que quieres eliminar este Taller?', :method => :delete %></li>
 </ul>
 <% end %>
+
+<% if admin? %>
+<h2>Alumnos</h2>
+<ul>
+  <% @workshop.attendees.each do |attendee| %>
+  <li><%= link_to attendee.name, [@workshop, attendee] %>, <%= attendee.email %>, <%= attendee.phone %>, [<%= attendee.status %>] <% if !attendee.comment.blank? %>(<%= link_to 'comentario!', [@workshop, attendee] %>)<% end %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<h2>Preinscripción</h2>
+<p>Rellena este formulario con tus datos, y realiza la preinscripción mediante Paypal.</p>
+
+<p>Cualquier duda ponte en contacto con: <a href="mailto:chmolano@gmail.com">Cecilia H. Molano</a>.
+
+<%= render :partial => 'attendees/form' %>
+
+
 
 <p><%= link_to "Ver Todos los Talleres", workshops_path %></p>
