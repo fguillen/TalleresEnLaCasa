@@ -141,10 +141,12 @@ div.short-description{
 font-style: italic;
 }
 
-form.edit_workshop textarea{
+form.edit_workshop textarea,
+form.new_workshop textarea{
 width: 600px;
 }
 
-form.edit_workshop textarea.edition{
+form.edit_workshop textarea.edition,
+form.new_workshop textarea.edition{
 height: 500px;
 }
