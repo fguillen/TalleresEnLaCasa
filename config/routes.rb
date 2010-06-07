@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :workshops do |workshops|
+  map.resources :workshops, :collection => { :sort => :post } do |workshops|
     workshops.resources :attendees, :member => [:confirm_payment]
   end
 

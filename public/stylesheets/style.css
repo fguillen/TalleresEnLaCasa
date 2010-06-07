@@ -150,3 +150,5 @@ form.edit_workshop textarea.edition,
 form.new_workshop textarea.edition{
 height: 500px;
 }
+
+li .sort-handle { color: #777; cursor: move; font-size: 12px; }

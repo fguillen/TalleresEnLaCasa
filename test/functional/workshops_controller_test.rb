@@ -95,4 +95,21 @@ class WorkshopsControllerTest < ActionController::TestCase
     assert_redirected_to workshops_url
     assert !Workshop.exists?(workshop.id)
   end
+  
+  def test_sort    
+    workshop_1 = Factory(:workshop, :position => 1)
+    workshop_2 = Factory(:workshop, :position => 2)
+    workshop_3 = Factory(:workshop, :position => 3)
+    
+    assert_equal( [workshop_1.id, workshop_2.id, workshop_3.id], Workshop.all.map { |p| p.id } )
+    
+    post(
+      :sort,
+      :workshops => [workshop_2.id, workshop_3.id, workshop_1.id]
+    )
+
+    assert_response :success
+    assert_equal( [workshop_2.id, workshop_3.id, workshop_1.id], Workshop.all.map { |p| p.id } )
+    assert_equal( ' ', @response.body )
+  end
 end

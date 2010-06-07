@@ -1,5 +1,5 @@
 class WorkshopsController < ApplicationController
-  before_filter :require_admin, :only => [:new, :create, :edit, :update, :destroy]
+  before_filter :require_admin, :only => [:new, :create, :edit, :update, :destroy, :sort]
   
   def index
     @workshops = Workshop.all
@@ -38,6 +38,13 @@ class WorkshopsController < ApplicationController
       flash[:alert] = "Algún error al modificar Taller."
       render :action => 'edit'
     end
+  end
+  
+  def sort  
+    params[:workshops].each_with_index do |id, index|  
+      Workshop.update_all(['position=?', index+1], ['id=?', id])  
+    end  
+    render :nothing => true  
   end
   
   def destroy

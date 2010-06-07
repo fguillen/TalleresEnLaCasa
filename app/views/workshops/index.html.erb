@@ -13,13 +13,18 @@
 <p>Los cursos son intensivos de <strong>cuatro días</strong>, tres horas cada día, excepto el taller de origami que durará
   dos días.</p>
 
-<ul class="workshops">
-<% @workshops.each do |workshop| %>
-<li><%= link_to workshop.title, workshop %> <span class="price">(<%= workshop.price %>€)</span> <%= workshop.short_description %></li>
-<% end %>
+<ul id="workshops" class="workshops">  
+  <% @workshops.each do |workshop| %>  
+    <% content_tag_for :li, workshop do %>  
+      <%= link_to workshop.title, workshop %> <span class="price">(<%= workshop.price %>€)</span> <%= workshop.short_description %>
+      <% if admin? %><span class="sort-handle">[ordenar]</span><% end %>
+    <% end %>  
+  <% end %>  
 </ul>
 
+
 <% if admin? %>
+<%= sortable_element('workshops', :url => sort_workshops_path, :handle => 'sort-handle') %> 
 <ul class="admin-links">
   <li><%= link_to "Nuevo Taller", new_workshop_path %></li>
 </ul>
