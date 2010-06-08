@@ -6,7 +6,7 @@
 </div>
 
 <div class="description">
-  <%= simple_format( @workshop.description ) %>
+  <%= RDiscount.new( @workshop.description ).to_html %>
 </div>
 
 <% if admin? %>
