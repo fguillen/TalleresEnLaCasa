@@ -154,5 +154,11 @@ height: 500px;
 li .sort-handle { color: #777; cursor: move; font-size: 12px; }
 
 div.description ul{
-margin: 10px;
+margin: 10px 0px 10px 20px;
+
+}
+
+div.description ul li{
+list-style-type: disc;
+
 }
