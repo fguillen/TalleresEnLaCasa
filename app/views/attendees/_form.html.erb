@@ -13,8 +13,10 @@
     <%= f.text_field :phone %>
   </p>
   <p>
-    <%= f.label :comment, 'Commentario' %>
+    <%= f.label :comment, 'Commentario. <span class="small">En el comentario puedes hablarnos un poco de ti y que es lo que esperas aprender en el curso.</span>' %>
+    
     <%= f.text_area :comment %>
+    
   </p>
 
   <p><%= f.submit "Pagar los #{APP_CONFIG[:preinscription_price]}€ de la Preinscripción" %></p>
